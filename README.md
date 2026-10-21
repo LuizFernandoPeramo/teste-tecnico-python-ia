@@ -163,3 +163,48 @@ Os três exercícios abordam aspectos complementares de uma aplicação que util
 A proposta busca melhorar a previsibilidade do sistema, facilitar a identificação de falhas e reduzir o risco de operações indevidas.
 
 As soluções apresentadas podem servir como base para uma implementação em produção, desde que sejam realizadas as validações de integração e os ajustes necessários à infraestrutura utilizada.
+
+## Uso de IA
+
+Foram utilizadas ferramentas de IA para elaborar a primeira versão da solução e apoiar sua revisão técnica. O material inicial foi produzido com Claude; a revisão posterior foi realizada com ChatGPT. O auxílio incluiu a organização dos arquivos, a implementação Python, a elaboração dos testes e a redação das análises.
+
+
+### Partes da solução em que a IA auxiliou
+
+Exercício 1 — AWS Lambda, SQS e Bedrock
+
+A IA auxiliou na identificação de problemas do código original e na elaboração de melhorias relacionadas ao tratamento de erros, processamento de mensagens, controle de duplicidade, gerenciamento do histórico das conversas e observabilidade.
+
+Também foi utilizada na elaboração e revisão dos testes automatizados com pytest.
+
+Exercício 2 — Análise do fluxo n8n
+
+Utilizei a IA para apoiar a análise das possíveis causas de falhas no reprocessamento de mensagens, discutir alternativas de monitoramento e organizar as recomendações técnicas.
+
+Exercício 3 — Engenharia de prompts
+
+A IA auxiliou na estruturação do prompt, na definição de cenários de teste e na escolha de métricas para avaliar o comportamento do assistente virtual, especialmente em situações que exigem confirmação do cliente ou encaminhamento para atendimento humano.
+
+Documentação
+
+Utilizei a ferramenta para revisar a redação, organizar as explicações e melhorar a apresentação dos arquivos Markdown e do README.
+
+### Sugestões modificadas ou rejeitadas
+
+Durante a revisão, fiz ajustes nas sugestões apresentadas pela IA para adequá-las aos requisitos do desafio.
+
+- Tratamento de falhas: mantive a abordagem de falhas parciais do SQS, permitindo que somente as mensagens com erro sejam encaminhadas para uma nova tentativa.
+- Ambiente de execução: optei por utilizar simulações locais do Bedrock e do armazenamento de sessões, em vez de depender de uma infraestrutura AWS real para executar os testes.
+- Organização do código: retirei comentários e explicações extensas dos arquivos Python, mantendo a documentação técnica em arquivos separados.
+- Documentação: revisei e simplifiquei os textos gerados para apresentar as decisões técnicas de forma mais objetiva.
+- Validação: não considerei as sugestões da IA como suficientes por si só. Executei os testes automatizados e a demonstração local para verificar o comportamento da implementação.
+
+### Validação da solução
+
+Após os ajustes, executei os testes automatizados com pytest, obtendo 21 testes aprovados.
+
+Também executei a demonstração local do consumidor SQS, verificando o processamento de três mensagens e o retorno de apenas uma mensagem com falha no campo `batchItemFailures`.
+
+Os testes foram realizados com componentes simulados. Portanto, os resultados comprovam o comportamento nos cenários locais avaliados, mas não substituem uma validação integrada em ambiente AWS.
+
+A IA foi utilizada como ferramenta de apoio ao desenvolvimento, e suas sugestões passaram por revisão, ajustes e testes antes de serem incorporadas à solução.
